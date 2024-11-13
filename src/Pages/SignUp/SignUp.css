@@ -1,0 +1,29 @@
+.signup-form {
+  margin-top: 5%;
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0px 0px 5px white;
+  font-size: 22px;
+}
+.signup-form input {
+  color: blue;
+}
+.signup-form button {
+  width: fit-content;
+  height: fit-content;
+  font-size: 20px;
+  color: brown;
+  font-weight: 800;
+  border-radius: 5px;
+  padding: 5px;
+}
+.link-to-login {
+  font-size: 22px;
+}

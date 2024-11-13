@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "trigger"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "trigger-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
