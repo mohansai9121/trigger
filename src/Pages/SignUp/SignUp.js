@@ -3,6 +3,8 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import { push, ref, set } from "firebase/database";
 import { database } from "../../Firebase/firebase";
+import { Oval } from "react-loader-spinner";
+import logo from "../../assets/images/trigger-logo.png";
 
 const SignUp = () => {
   const now = new Date().toLocaleDateString();
@@ -16,6 +18,7 @@ const SignUp = () => {
   const [password2, setPassword2] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const RegisterToDB = async (e) => {
     e.preventDefault();
@@ -33,6 +36,7 @@ const SignUp = () => {
             Birthday: bday,
             Mobile: mobile,
             Email: email,
+            CreatedAt: new Date().toLocaleString(),
             Password: password1,
           };
           const dbRef = await push(ref(database, "/registered"));
@@ -41,6 +45,7 @@ const SignUp = () => {
           setIsLoading(false);
           setPasswordMatch(null);
           alert("data posted");
+          setIsRegistered(true);
         }
       } else {
         alert("Enter all the required input fields");
@@ -52,92 +57,124 @@ const SignUp = () => {
 
   return (
     <div>
-      <center>
-        <form className="signup-form" onSubmit={RegisterToDB}>
-          <div>
-            <label>First Name:</label>{" "}
-            <input
-              type="text"
-              placeholder="First Name..."
-              value={fName}
-              onChange={(e) => setFName(e.target.value)}
+      <center className={isLoading && "overlay"}>
+        <div>
+          {isLoading ? (
+            <Oval
+              visible={true}
+              secondaryColor="white"
+              height="100"
+              width="100"
+              color="blue"
+              wrapperClass="oval-loader"
             />
-          </div>
-          <div>
-            <label>Last Name:</label>{" "}
-            <input
-              type="text"
-              placeholder="Last Name..."
-              value={lName}
-              onChange={(e) => setLName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Birthday:</label>{" "}
-            <input
-              type="Date"
-              max={now}
-              min="1910-01-01"
-              value={bday}
-              onChange={(e) => setBday(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Mobile:</label>{" "}
-            <input
-              type="number"
-              placeholder="Mobile..."
-              min={2222222222}
-              max={10000000000}
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Email:</label>{" "}
-            <input
-              type="email"
-              placeholder="Email..."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Password:</label>{" "}
-            <input
-              type="password"
-              placeholder="password..."
-              value={password1}
-              onChange={(e) => setPassword1(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Re-enter password:</label>{" "}
-            <input
-              type="text"
-              placeholder="password..."
-              value={password2}
-              onChange={(e) => setPassword2(e.target.value)}
-            />
-          </div>
-          {passwordMatch === false && password1 !== password2 ? (
-            <div>
-              <p style={{ color: "red" }}>Passwords are not matching...</p>
-            </div>
           ) : (
-            <></>
+            <>
+              <div className="signup-page-design">
+                <div>
+                  <img src={logo} alt="trigger logo" width={300} />
+                </div>
+                <form className="signup-form" onSubmit={RegisterToDB}>
+                  <div>
+                    <label>First Name:</label>{" "}
+                    <input
+                      type="text"
+                      placeholder="First Name..."
+                      value={fName}
+                      onChange={(e) => setFName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Last Name:</label>{" "}
+                    <input
+                      type="text"
+                      placeholder="Last Name..."
+                      value={lName}
+                      onChange={(e) => setLName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Birthday:</label>{" "}
+                    <input
+                      type="Date"
+                      max={now}
+                      min="1910-01-01"
+                      value={bday}
+                      onChange={(e) => setBday(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Mobile:</label>{" "}
+                    <input
+                      type="number"
+                      placeholder="Mobile..."
+                      min={2222222222}
+                      max={10000000000}
+                      value={mobile}
+                      onChange={(e) => setMobile(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Email:</label>{" "}
+                    <input
+                      type="email"
+                      placeholder="Email..."
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Password:</label>{" "}
+                    <input
+                      type="password"
+                      placeholder="password..."
+                      value={password1}
+                      onChange={(e) => setPassword1(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label>Re-enter password:</label>{" "}
+                    <input
+                      type="text"
+                      placeholder="password..."
+                      value={password2}
+                      onChange={(e) => setPassword2(e.target.value)}
+                    />
+                  </div>
+                  {passwordMatch === false && password1 !== password2 ? (
+                    <div>
+                      <p style={{ color: "red" }}>
+                        Passwords are not matching...
+                      </p>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                  {passwordMatch === false && password1 === password2 ? (
+                    <div>
+                      <p style={{ color: "red" }}>Passwords matched...</p>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                  <button type="submit">Register</button>
+                </form>
+              </div>
+              <div className="link-to-login">
+                {isRegistered ? (
+                  <>
+                    <span style={{ color: "green" }}>
+                      Registered Successfully
+                    </span>
+                    , Click here to login->
+                  </>
+                ) : (
+                  <>Already have an account ?</>
+                )}{" "}
+                <Link to="/login">Login</Link>
+              </div>
+            </>
           )}
-          {passwordMatch === false && password1 === password2 ? (
-            <div>
-              <p style={{ color: "red" }}>Passwords matched...</p>
-            </div>
-          ) : (
-            <></>
-          )}
-          <button type="submit">Register</button>
-        </form>
-        <div className="link-to-login">
-          Already have an account ? <Link to="/login">Login</Link>
         </div>
       </center>
     </div>

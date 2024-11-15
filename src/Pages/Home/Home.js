@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    console.log("logged user:", user);
+  }, []);
+
   return (
     <div>
-      <h2>Home</h2>
+      <Sidebar />
+      <Outlet />
     </div>
   );
 };
