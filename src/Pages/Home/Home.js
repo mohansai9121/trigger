@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
   useEffect(() => {
@@ -9,7 +10,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="home-design">
       <Sidebar />
       <Outlet />
     </div>

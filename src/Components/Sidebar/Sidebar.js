@@ -1,6 +1,8 @@
 import React from "react";
 import { FaBell, FaHome, FaItunesNote } from "react-icons/fa";
 import { IoIosMore } from "react-icons/io";
+import { Link } from "react-router-dom";
+import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
@@ -8,15 +10,21 @@ const Sidebar = () => {
       <div>
         <div>
           <FaHome />
-          Home
+          <Link to="/" className="link">
+            Home
+          </Link>
         </div>
         <div>
           <FaBell />
-          Notifications
+          <Link to="/notifications" className="link">
+            Notifications
+          </Link>
         </div>
         <div>
           <FaItunesNote />
-          Music
+          <Link to="/music" className="link">
+            Music
+          </Link>
         </div>
         <div>
           <IoIosMore />

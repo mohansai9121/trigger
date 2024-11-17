@@ -1,0 +1,29 @@
+.song-img {
+  margin: 2%;
+}
+.progress-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  justify-content: center;
+}
+.progress-container {
+  height: 10px;
+  width: 320px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  background-color: aliceblue;
+  cursor: pointer;
+}
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+  background-color: blue;
+}
+.song-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+  font-size: 24px;
+}
