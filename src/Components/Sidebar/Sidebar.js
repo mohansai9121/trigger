@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBell, FaHome, FaItunesNote, FaVideo } from "react-icons/fa";
+import { CgGames } from "react-icons/cg";
 import { IoIosMore } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
@@ -30,6 +31,12 @@ const Sidebar = () => {
           <FaVideo />
           <Link to="/videos" className="link">
             Videos
+          </Link>
+        </div>
+        <div>
+          <CgGames />
+          <Link to="/games" className="link">
+            Games
           </Link>
         </div>
         <div>

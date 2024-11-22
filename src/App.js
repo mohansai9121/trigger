@@ -7,6 +7,12 @@ import Login from "./Pages/Login/Login";
 import Notifications from "./Pages/Notifications/Notifications";
 import Music from "./Pages/Music/Music";
 import Videos from "./Pages/Videos/VideoPlayer";
+import TicTacToe from "./Pages/Games/TicTacToe/TicTacToe";
+import CarGame from "./Pages/Games/CarGame/CarGame";
+import Games from "./Pages/Games/Games";
+import ChessGame from "./Pages/Games/Chess/ChessGame";
+import FlappyBirdGame from "./Pages/Games/FlappyBird/FlappyBirdGame";
+import DinoGame from "./Pages/Games/DinoGame/DinoGame";
 
 const App = () => {
   return (
@@ -19,6 +25,12 @@ const App = () => {
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/music" element={<Music />} />
             <Route path="/videos" element={<Videos />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/games/tictactoe" element={<TicTacToe />} />
+            <Route path="/games/cargame" element={<CarGame />} />
+            <Route path="/games/chess" element={<ChessGame />} />
+            <Route path="/games/flappybird" element={<FlappyBirdGame />} />
+            <Route path="/games/dinogame" element={<DinoGame />} />
           </Route>
         </Routes>
       </BrowserRouter>
