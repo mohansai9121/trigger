@@ -21,11 +21,13 @@ const Games = () => {
         </Link>
         <br />
         <br />
-        <Link to="/games/flappybird">
+        <Link to="/games/triggybird">
           <button>Flappy bird</button>
         </Link>
-        <Link to="/games/dinogame">
-          <button>Dino game</button>
+        <br />
+        <br />
+        <Link to="/games/triggyfrog">
+          <button>Triggy Frog</button>
         </Link>
       </center>
     </div>

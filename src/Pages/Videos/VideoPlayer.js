@@ -14,7 +14,7 @@ const VideoPlayer = () => {
   const [isMute, setIsMute] = useState(false);
   const [videoNumber, setVideoNumber] = useState(0);
 
-  const videoRef = useRef(null);
+  const videoRef = useRef();
 
   const handlePlay = () => {
     try {
@@ -26,12 +26,16 @@ const VideoPlayer = () => {
   };
 
   const handleMute = () => {
-    if (videoRef.current.volume > 0) {
-      videoRef.current.volume = 0;
-      setIsMute(true);
-    } else {
-      videoRef.current.volume = 1;
-      setIsMute(false);
+    try {
+      if (videoRef.current.volume > 0) {
+        videoRef.current.volume = 0;
+        setIsMute(true);
+      } else {
+        videoRef.current.volume = 1;
+        setIsMute(false);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -50,8 +54,8 @@ const VideoPlayer = () => {
   };
 
   const handleProgress = () => {
-    if (!videoRef.current) return;
     try {
+      if (!videoRef.current) return;
       let interval = null;
       if (isPlaying && videoRef.current) {
         interval = setInterval(() => {

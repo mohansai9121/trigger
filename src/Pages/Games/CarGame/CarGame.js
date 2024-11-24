@@ -27,7 +27,6 @@ const Obstacle = styled.div`
   background: red;
   left: ${(props) => props.left}px;
   top: ${(props) => props.top}px;
-  transition: top 0.1s linear;
 `;
 
 const RoadLine1 = styled.div`
