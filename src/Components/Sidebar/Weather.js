@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ThreeD from "../ThreeD";
 
 const Weather = () => {
   const url = "https://api.openweathermap.org/data/2.5/";
@@ -65,6 +66,9 @@ const Weather = () => {
       <p>Sunrise:{sunrise} am</p>
       <p>Sunset:{sunset} pm</p>
       <p>Wind:{wind} km/hr</p>
+      <div>
+        <ThreeD />
+      </div>
     </div>
   );
 };
