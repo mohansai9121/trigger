@@ -1,0 +1,130 @@
+.music-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  height: 100vh;
+}
+
+.music-player {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playlist-container {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.songs-list {
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.song-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.song-item.playing {
+  background: rgba(0, 123, 255, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.song-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.song-title {
+  font-weight: bold;
+  color: white;
+}
+
+.song-category {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+/* Scrollbar styling */
+.songs-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.songs-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.songs-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.songs-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Animation for currently playing song */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.song-img {
+  margin: 2%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.progress-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.song-buttons {
+  display: flex;
+  gap: 50px;
+  font-size: 24px;
+}
+
+.song-buttons svg {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.song-buttons svg:hover {
+  transform: scale(1.2);
+}

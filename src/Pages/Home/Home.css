@@ -1,0 +1,11 @@
+.chat-bot-container {
+  position: fixed; /* Change from absolute to fixed */
+  top: 50%; /* Center vertically */
+  left: 80%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Perfect centering */
+  /*background-color: #f0f0f0;*/
+  /*border: 1px solid #ccc;*/
+  border-radius: 10px;
+  z-index: 1000;
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: adds shadow for better visibility */
+}
