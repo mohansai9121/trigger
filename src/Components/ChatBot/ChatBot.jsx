@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { FaRobot } from "react-icons/fa";
 import "./ChatBot.css";
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isServerConnected, setIsServerConnected] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     const testConnection = async () => {
@@ -27,6 +29,7 @@ const ChatBot = () => {
 
     const userMessage = { sender: "user", text: input };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
+    setIsTyping(true);
 
     try {
       console.log("Sending message:", input);
@@ -42,6 +45,7 @@ const ChatBot = () => {
 
       const botMessage = { sender: "bot", text: response.data.reply };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setIsTyping(false);
     } catch (error) {
       console.error("Detailed error information:", {
         message: error.message,
@@ -59,31 +63,55 @@ const ChatBot = () => {
         text: errorMessage,
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setIsTyping(false);
     }
 
     setInput("");
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-box">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`message ${msg.sender === "user" ? "user" : "bot"}`}
-          >
-            {msg.text}
-          </div>
-        ))}
+    <div className="chatbot-wrapper">
+      <div className="chatbot-header">
+        <FaRobot className="bot-icon" />
+        <h2>AI Assistant</h2>
       </div>
-      <div className="input-container">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
-        />
-        <button onClick={sendMessage}>Send</button>
+
+      <div className="chat-container">
+        <div className="chat-box">
+          {messages.map((msg, index) => (
+            <div key={index} className={`message ${msg.sender} fade-in`}>
+              {msg.text}
+              <span className="message-time">
+                {new Date().toLocaleTimeString()}
+              </span>
+            </div>
+          ))}
+          {isTyping && (
+            <div className="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          )}
+        </div>
+
+        <div className="input-container">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+            placeholder="Type your message..."
+            className="chat-input"
+          />
+          <button
+            onClick={sendMessage}
+            className="send-button"
+            disabled={!input.trim()}
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );

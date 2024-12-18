@@ -4,7 +4,6 @@ import {
   OrbitControls,
   PerspectiveCamera,
   Environment,
-  useGLTF,
   Sky,
   Stars,
 } from "@react-three/drei";

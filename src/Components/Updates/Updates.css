@@ -1,0 +1,154 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
+.wheel-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 20px auto;
+}
+
+.pointer {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #ff4444;
+  z-index: 2;
+}
+
+.wheel {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 10px solid #333;
+  margin: 0 auto;
+  transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+  transform-origin: center;
+  background: conic-gradient(
+    from 0deg,
+    #ff6b6b 0deg 45deg,
+    #4ecdc4 45deg 90deg,
+    #45b7d1 90deg 135deg,
+    #96c93d 135deg 180deg,
+    #e4c441 180deg 225deg,
+    #ef4444 225deg 270deg,
+    #8b5cf6 270deg 315deg,
+    #3b82f6 315deg 360deg
+  );
+}
+
+.spin-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.description-container {
+  width: 320px;
+  height: 320px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.description {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.segment {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  transform-origin: 0% 0%;
+  left: 50%;
+  top: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number {
+  position: absolute;
+  left: -20%;
+  top: 0px;
+  transform-origin: 50% 95px;
+  transform: translateX(-50%) rotate(calc(360deg / -8 * var(--index)));
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.spin-button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.spin-button:hover:not(:disabled) {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+.spin-button:disabled {
+  background: #64748b;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .wheel {
+    width: 250px;
+    height: 250px;
+  }
+
+  .segment {
+    font-size: 20px;
+  }
+
+  .spin-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}

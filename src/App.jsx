@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Signup from "./Pages/Signup/Signup";
-import Login from "./Pages/Login/Login";
 import Home from "./Pages/Home/Home";
 import Music from "./Components/Music/Music";
 import Quiz from "./Components/Quiz/Quiz";
@@ -17,8 +15,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/musicPlayer" element={<Music />} />
         <Route path="/quiz" element={<Quiz />} />

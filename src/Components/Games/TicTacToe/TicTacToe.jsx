@@ -73,90 +73,25 @@ const TicTacToe = () => {
       <Link to="/games">
         <button>Games</button>
       </Link>
-      <div style={styles.container}>
-        <h2 style={styles.title}>Tic Tac Toe</h2>
+      <div className="container">
+        <h2 className="title">Tic Tac Toe</h2>
 
-        <div style={styles.board}>
+        <div className="board">
           {squares.map((square, i) => (
-            <button
-              key={i}
-              style={styles.square}
-              onClick={() => handleClick(i)}
-            >
+            <button key={i} className="square" onClick={() => handleClick(i)}>
               {square}
             </button>
           ))}
         </div>
 
-        <div style={styles.status}>{getStatus()}</div>
+        <div className="status">{getStatus()}</div>
 
-        <button style={styles.newGameButton} onClick={resetGame}>
+        <button className="newGameButton" onClick={resetGame}>
           New Game
         </button>
       </div>
     </>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "20px",
-    backgroundColor: "#f0f0f0",
-    borderRadius: "10px",
-    maxWidth: "400px",
-    margin: "0 auto",
-  },
-  title: {
-    color: "#333",
-    marginBottom: "20px",
-  },
-  board: {
-    display: "grid",
-    gridTemplate: "repeat(3, 1fr) / repeat(3, 1fr)",
-    gap: "10px",
-    backgroundColor: "#fff",
-    padding: "15px",
-    borderRadius: "10px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-  },
-  square: {
-    width: "80px",
-    height: "80px",
-    backgroundColor: "#fff",
-    border: "2px solid #333",
-    borderRadius: "8px",
-    fontSize: "2em",
-    fontWeight: "bold",
-    cursor: "pointer",
-    color: "#333",
-    transition: "all 0.3s ease",
-    "&:hover": {
-      backgroundColor: "#f8f8f8",
-    },
-  },
-  status: {
-    marginTop: "20px",
-    fontSize: "1.2em",
-    fontWeight: "bold",
-    color: "#333",
-  },
-  newGameButton: {
-    marginTop: "20px",
-    padding: "10px 20px",
-    fontSize: "1em",
-    backgroundColor: "#4CAF50",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-    "&:hover": {
-      backgroundColor: "#45a049",
-    },
-  },
 };
 
 export default TicTacToe;
